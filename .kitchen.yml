@@ -1,0 +1,43 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+  - name: ubuntu-14.04
+
+suites:
+  - name: from_package
+    run_list:
+      - 'recipe[apt]'
+      - 'recipe[openhab]'
+    attributes:
+      java:
+        install_flavor: 'oracle'
+        jdk_version: '8'
+        oracle:
+          accept_oracle_download_terms: true
+      openhab:
+        install_method: package
+        plugins:
+          - action-xbmc
+          - binding-xbmc
+
+  - name: from_source
+    run_list:
+      - 'recipe[apt]'
+      - 'recipe[openhab]'
+    attributes:
+      java:
+        install_flavor: 'oracle'
+        jdk_version: '8'
+        oracle:
+          accept_oracle_download_terms: true
+      openhab:
+        install_method: source
+        plugins:
+          - action-xbmc
+          - binding-xbmc
