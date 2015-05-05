@@ -108,6 +108,23 @@ Tested succesful on:
   </tr>
 </table>
 
+### my.openHAB plugin
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><tt>['openhab']['my']['version']</tt></td>
+    <td>String</td>
+    <td>Which version of the my.openhab plugin to install</td>
+    <td><tt>1.4.0</tt></td>
+  </tr>
+</table>
+
 ## Usage
 
 - 1. Make sure you have Java setup:
@@ -155,6 +172,12 @@ You now have OpenHAB installed.  If you did it from the packages, you have the i
 ### Init script
 
 If you want to install an init.d script for booting, use the `openhab::initscript` recipie.  Currently only Raspbian is supported.
+
+### my.openhab plugin
+
+If you want to install the myOpenHABplugin, run the `openhab::my_openhab` recipie - it will place the requested .jar in the addons dir.
+
+You'll still need to set/get the uuid/secret registration yourself.
 
 ## License and Authors
 
