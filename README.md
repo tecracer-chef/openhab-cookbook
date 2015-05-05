@@ -18,6 +18,13 @@ Tested succesful on:
 
 - Ubuntu 12.04
 - Ubuntu 14.04
+- Raspbian (source-only)
+
+## Recipies
+
+- `openhab` - Installs openhab
+- `openhab::init_script` - Installs openhab init.d script
+- `openhab::my_openhab`  - Installs my.openhab addon .jar
 
 ## Attributes
 
@@ -171,7 +178,7 @@ You now have OpenHAB installed.  If you did it from the packages, you have the i
 
 ### Init script
 
-If you want to install an init.d script for booting, use the `openhab::initscript` recipie.  Currently only Raspbian is supported.
+If you want to install an init.d script for booting, use the `openhab::init_script` recipie.  Currently only Raspbian is supported.
 
 ### my.openhab plugin
 
