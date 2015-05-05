@@ -14,3 +14,8 @@ default['openhab']['plugins']        = []
 default['openhab']['install_dir'] = '/opt'
 default['openhab']['user']        = 'root'
 default['openhab']['group']       = 'root'
+
+# Init script options:
+default['openhab']['http_port']  = '8080'
+default['openhab']['https_port'] = '8443'
+

@@ -1,0 +1,66 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          openhab
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: OpenHAB Daemon
+# Description: Build your smart home in no time!
+### END INIT INFO
+
+ROOT_DIR=<%= node['openhab']['install_dir'] %>/openhab
+
+# set path to eclipse folder. If local folder, use '.'; otherwise, use /path/to/eclipse/
+eclipsehome="$ROOT_DIR/server";
+
+# set ports for HTTP(S) server
+HTTP_PORT=<%=  node['openhab']['http_port'] %>
+HTTPS_PORT=<%= node['openhab']['https_port'] %>
+
+# get path to equinox jar inside $eclipsehome folder
+cp=$(find $eclipsehome -name "org.eclipse.equinox.launcher_*.jar" | sort | tail -1);
+
+# This next line determines what user the script runs as.
+DAEMON_USER=<%= node['openhab']['user'] %>
+DAEMON_NAME=openhab
+
+DAEMON=/usr/bin/java
+DAEMON_ARGS="-Djna.boot.library.path=/usr/lib/jni -Dgnu.io.rxtx.SerialPorts=/dev/ttyAMA0 -Dosgi.clean=true -Declipse.ignoreApp=true -Dosgi.noShutdown=true -Djetty.port=$HTTP_PORT -Djetty.port.ssl=$HTTPS_PORT -Djetty.home=. -Dlogback.configurationFile=configurations/logback.xml -Dfelix.fileinstall.dir=addons -Djava.library.path=lib -Djava.security.auth.login.config=./etc/login.conf -Dorg.quartz.properties=./etc/quartz.properties -Dequinox.ds.block_timeout=240000 -Dequinox.scr.waitTimeOnBlock=60000 -Dfelix.fileinstall.active.level=4 -Djava.awt.headless=true -jar $cp $* -console "
+PIDFILE=/var/run/$DAEMON_NAME.pid
+
+. /lib/lsb/init-functions
+
+do_start() {
+  log_daemon_msg "Starting system $DAEMON_NAME daemon"
+  /sbin/start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --chdir $ROOT_DIR --exec $DAEMON -- $DAEMON_ARGS
+  log_end_msg $?
+}
+do_stop() {
+  log_daemon_msg "Stopping system $DAEMON_NAME daemon"
+  /sbin/start-stop-daemon --stop --pidfile $PIDFILE --retry 10
+  log_end_msg $?
+}
+
+case "$1" in
+
+    start|stop)
+        do_${1}
+        ;;
+
+    restart|reload|force-reload)
+        do_stop
+        do_start
+        ;;
+
+    status)
+        status_of_proc "$DAEMON_NAME" "$DAEMON" && exit 0 || exit $?
+        ;;
+    *)
+        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|status}"
+        exit 1
+        ;;
+
+esac
+exit 0

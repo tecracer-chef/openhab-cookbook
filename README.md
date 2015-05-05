@@ -56,6 +56,29 @@ Tested succesful on:
   </tr>
 </table>
 
+### Init script install only
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><tt>['openhab']['http_port']</tt></td>
+    <td>String</td>
+    <td>HTTP Port for the init script</td>
+    <td><tt>8080</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['openhab']['https_port']</tt></td>
+    <td>String</td>
+    <td>HTTPS Port for the init script</td>
+    <td><tt>8443</tt></td>
+  </tr>
+</table>
+
 ### Source install only
 
 <table>
@@ -128,6 +151,10 @@ Tested succesful on:
 - 5. Profit!
 
 You now have OpenHAB installed.  If you did it from the packages, you have the init.d script set up and openhab running already.
+
+### Init script
+
+If you want to install an init.d script for booting, use the `openhab::initscript` recipie.  Currently only Raspbian is supported.
 
 ## License and Authors
 
