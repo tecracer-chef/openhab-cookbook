@@ -12,13 +12,14 @@ VERSION_URL = "#{RELEASE_URL}v#{node[:openhab][:version]}/distribution-#{node[:o
 
 package 'unzip'
 
-ark 'openhab' do
+ark "openhab-#{node[:openhab][:version]}" do
+  name 'openhab'
   url "#{VERSION_URL}runtime.zip"
   version node[:openhab][:version]
   path node[:openhab][:install_dir]
   owner node[:openhab][:user]
   group node[:openhab][:group]
-
+  strip_components 0
   action :put
 end
 
