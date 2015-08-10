@@ -7,8 +7,13 @@
 # MIT
 #
 
-RELEASE_URL = "https://github.com/openhab/openhab/releases/download/"
-VERSION_URL = "#{RELEASE_URL}v#{node[:openhab][:version]}/distribution-#{node[:openhab][:version]}-"
+if node[:openhab][:version] < "1.6.2"
+  RELEASE_URL = "https://github.com/openhab/openhab/releases/download/"
+  VERSION_URL = "#{RELEASE_URL}v#{node[:openhab][:version]}/distribution-#{node[:openhab][:version]}-"
+else
+  RELEASE_URL = "https://bintray.com/artifact/download/openhab/bin/"
+  VERSION_URL = "#{RELEASE_URL}distribution-#{node[:openhab][:version]}-"
+end
 
 package 'unzip'
 

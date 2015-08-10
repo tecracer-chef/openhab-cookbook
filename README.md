@@ -53,7 +53,7 @@ Tested succesful on:
     <td><tt>['openhab']['version']</tt></td>
     <td>String</td>
     <td>What version of openhab to install</td>
-    <td><tt>1.6.2</tt></td>
+    <td><tt>1.7.1</tt></td>
   </tr>
   <tr>
     <td><tt>['openhab']['plugins']</tt></td>
@@ -128,7 +128,7 @@ Tested succesful on:
     <td><tt>['openhab']['my']['version']</tt></td>
     <td>String</td>
     <td>Which version of the my.openhab plugin to install</td>
-    <td><tt>1.4.0</tt></td>
+    <td><tt>1.7.0</tt></td>
   </tr>
 </table>
 

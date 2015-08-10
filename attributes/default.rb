@@ -7,7 +7,7 @@
 
 default['openhab']['install_java']   = true
 default['openhab']['install_method'] = 'package'
-default['openhab']['version']        = '1.6.2'
+default['openhab']['version']        = '1.7.1'
 default['openhab']['plugins']        = []
 
 # Source only options:
@@ -20,5 +20,4 @@ default['openhab']['http_port']  = '8080'
 default['openhab']['https_port'] = '8443'
 
 # my.openHAB options:
-default['openhab']['my']['version'] = '1.4.0'
-
+default['openhab']['my']['version'] = '1.7.0'
