@@ -2,6 +2,8 @@
 
 This installs [openhab](http://www.openhab.org/) and selected plugins.  You can either install via the debian packages, or from source.
 
+NOTE: This is only for versions 1.x of openhab.  When I move to OpenHAB 2, I'll start a `openhab2` cookbook.
+
 ### Dependencies
 
 - Cookbooks:
@@ -25,6 +27,7 @@ Tested succesful on:
 - `openhab` - Installs openhab
 - `openhab::init_script` - Installs openhab init.d script
 - `openhab::my_openhab`  - Installs my.openhab addon .jar
+- `openhab::habmin` - Installs [HABmin console](https://github.com/cdjackson/HABmin)
 
 ## Attributes
 
@@ -129,6 +132,47 @@ Tested succesful on:
     <td>String</td>
     <td>Which version of the my.openhab plugin to install</td>
     <td><tt>1.7.0</tt></td>
+  </tr>
+</table>
+
+### habmin console
+
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><tt>['openhab']['habmin']['install_dir']</tt></td>
+    <td>String</td>
+    <td>Where to install habmin</td>
+    <td><tt>/opt/openhab/webapps/habmin</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['openhab']['habmin']['git_repository']</tt></td>
+    <td>String</td>
+    <td>Which repo to download habmin from</td>
+    <td><tt>https://github.com/cdjackson/HABmin</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['openhab']['habmin']['git_revision']</tt></td>
+    <td>String</td>
+    <td>Which ref of habmin to use</td>
+    <td><tt>e523d77c7a3d73d75ce050a582a3bfe8bc7a1324</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['openhab']['habmin']['user']</tt></td>
+    <td>String</td>
+    <td>What user to run install as</td>
+    <td><tt>root</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['openhab']['habmin']['group']</tt></td>
+    <td>String</td>
+    <td>What group to run install as</td>
+    <td><tt>root</tt></td>
   </tr>
 </table>
 

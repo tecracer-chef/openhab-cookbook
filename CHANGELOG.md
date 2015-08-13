@@ -1,3 +1,6 @@
+# 0.0.4
+- Add recipe to install [HABmin](https://github.com/cdjackson/HABmin)
+
 # 0.0.3
 - Support 1.7.x releases, now hosted on bintray
 - Support 1.7.x myopenhab releases, now hosted on bintray
