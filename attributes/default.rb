@@ -7,7 +7,7 @@
 
 default['openhab']['install_java']   = true
 default['openhab']['install_method'] = 'package'
-default['openhab']['version']        = '1.7.1'
+default['openhab']['version']        = '1.8.1'
 default['openhab']['plugins']        = []
 
 # Source only options:
